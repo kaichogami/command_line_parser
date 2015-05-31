@@ -1,0 +1,36 @@
+"""Search for particular extension files in given directory"""
+import os
+from folder import folder
+
+class search:
+
+    def __init__(self):
+        self.folders = folder()
+
+    def search(self, extension, whole = False, path = '/media'):
+        #search for files having extension as given. We find it by 
+        #listing all the directories in the path concerned and comparing
+        #each file in them with the extension
+
+        length = len(extension)
+        if whole == True and path:
+            return "invalid option"
+
+        elif whole == True:
+            folders = self.folders.getdirs()
+            files = []
+            for x in folders:
+                files.extend([f for f in os.listdir(x) if os.path.isfile(os.path.join(x, f))])
+
+            return [x for x in files if x[-(length): -1] == extension]
+
+        elif path:
+            folders = self.folders.getdirs(search = path)
+            files = []
+            for x in folders:
+                files.extend([f for f in os.listdir(x) if os.path.isfile(os.path.join(x, f))])
+
+            return [x for x in files if x[-length] == extension]
+
+        else:
+            return "invalid option"

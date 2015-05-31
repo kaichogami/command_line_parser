@@ -33,5 +33,4 @@ class base:
          elif self.expr[0] == 'search':
             from search import search
             action = search()
-            action.search(self.expr)
-            print(action.parse())
+            action.search()
