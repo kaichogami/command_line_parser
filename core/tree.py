@@ -7,9 +7,8 @@ class tree:
         self.children = {}
 
     def addchild(self, value):
-        for x in value:
-            child = tree(x)
-            self.children[x] = child
+         child = tree(value)
+         self.children[value] = child
 
     def setroot(self, value):
         self.root = value

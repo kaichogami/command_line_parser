@@ -33,4 +33,3 @@ class folder:
 
         except:
             print("Invalid directory")
-            return

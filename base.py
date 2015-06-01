@@ -2,7 +2,9 @@
    the first argument of the command and matches it with the given COMMANDS.
    Then it calls the respective class to do the work.
 """
-COMMANDS = ['cat', 'sort', 'search', 'list directories']
+import sys
+
+COMMANDS = ['cat', 'sort', 'search', 'list']
 
 class base:
     def __init__(self, expr):
@@ -21,17 +23,22 @@ class base:
             return '\n'
 
          if self.expr[0] == 'sort':
-            from sort import sort
+            from core.sort import sort
             action = sort(self.expr)
             print(action.parse())
 
          elif self.expr[0] == 'cat':
-            from cat import cat
+            from core.cat import cat
             action = cat(self.expr)
             print(action.parse())
 
          elif self.expr[0] == 'search':
-            from search import search
-            action = search()
-            action.search(self.expr)
+            from core.search import search
+            action = search(self.expr)
             print(action.parse())
+
+         elif self.expr[0] == 'list':
+            from core.listall import list_all
+            action = list_all(self.expr)
+            print(action.parse())
+            

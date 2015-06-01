@@ -1,40 +1,27 @@
-"""Search for particular extension files in given directory"""
+"""Search for particular file in given directory"""
+from tree import tree
 
 class search:
 
-    def __init__(self, args)
-        #construct search tree to parse
-        self.tree = tree('search')
-        self.tree.addchild(['-f', '--files'])
-        self.tree.addchild(['-d', '--directories'])
-        self.tree.getchild('-f').addchild()
-        self.tree
+    def __init__(self, args):
+        self.args = args
 
 
-    def search_file(self, file_name, whole = False, path'/media'):
-        from files import files
+    def search_file(self, file_name, path):
+        from file import files
 
         obj = files()
-        temp = obj.show(whole = whole, path = path)
+        temp = obj.show(path = path)
 
         result = [x for x in temp if x == file_name]
         return '\t'.join(result)
 
 
-    def list_files(self, extension, whole = False, path = '/media'):
-        from files import files
+    def parse(self):
+        if len(self.args) != 3:
+            return "command length invalid"
 
-        length = len(extension)
-        obj = files()
-        temp = obj.show(whole = whole, path = path)
-
-        result = [x for x in temp if x[-length:]==extension]
-        return '\t'.join(result)
+        return (self.search_file(self.args[1], self.args[2]))
+        
 
 
-    def list_folders(self, whole = False, path = '/media'):
-        from folder import folder
-
-        obj = folder()
-        result = obj.getdirs(whole=whole, search = path)
-        return '\t'.join(result)

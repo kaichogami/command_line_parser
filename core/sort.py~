@@ -5,10 +5,6 @@ from tree import tree
 class sort:
     def __init__(self, args):
         #construct sort tree
-        #This can be easily done by comparing using lists
-        #This tree method is undesirable as it is slow and complex
-        #with no added functionality
-
         sort_d = self.sort_dsc
         sort_a = self.sort_asc
         self.args = args
