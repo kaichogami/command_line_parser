@@ -4,7 +4,7 @@
 """
 import sys
 
-COMMANDS = ['cat', 'sort', 'search', 'list']
+COMMANDS = ['cat', 'sort', 'search', 'list', 'bye']
 
 class base:
     def __init__(self, expr):
@@ -41,4 +41,7 @@ class base:
             from core.listall import list_all
             action = list_all(self.expr)
             print(action.parse())
+
+         elif self.expr[0] == 'bye':
+            sys.exit()
             
